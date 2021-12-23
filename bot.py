@@ -13,7 +13,7 @@ api_hash =
 
 app = Client(session,api_id,api_hash)
 
-@app.on_message(filters.command('invite'))
+@app.on_message(filters.command('invite') & filters.chat(esanaChat))
 def my_handler(client, message):
     r=app.search_messages(invite_logger, query='('+str(message.from_user.id), limit=5)
     if len(r)==0:
